@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { red } from "@mui/material/colors";
 
@@ -12,9 +12,24 @@ import CloseIcon from "@mui/icons-material/Close";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
+// import { YOUTUBE_SEARCH_SUGGESTION_API } from "../constants/constants";
 
 const Navbar = () => {
   const dispatch = useDispatch();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     getSearchSuggestions();
+  //     return clearTimeout(timer);
+  //   }, 200);
+  // }, [searchQuery]);
+
+  // const getSearchSuggestions = async () => {
+  //   const data = await fetch(YOUTUBE_SEARCH_SUGGESTION_API + searchQuery);
+  //   const json = await data.json();
+  //   console.log(json);
+  // };
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
@@ -36,7 +51,14 @@ const Navbar = () => {
       </div>
       <div className="flex ">
         <div className="h-10 flex items-center p-2 shadow-sm border-2  rounded-l-full w-96 justify-center focus:outline-none ">
-          <input className="items-center focus:outline-none w-full p-3 h-full " />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+            }}
+            className="items-center focus:outline-none w-full p-3 h-full "
+          />
           <CloseIcon />
         </div>
 

@@ -4,7 +4,6 @@ import { formatViews } from "../constants/constants";
 import { Link } from "react-router-dom";
 
 const VideoCard = ({ videoInfo }) => {
-  console.log(videoInfo);
   const { snippet, statistics } = videoInfo;
   const { channelTitle, title, thumbnails } = snippet;
 

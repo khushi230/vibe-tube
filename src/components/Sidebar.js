@@ -18,6 +18,7 @@ import FileDownloadRoundedIcon from "@mui/icons-material/FileDownloadRounded";
 import WatchLaterRoundedIcon from "@mui/icons-material/WatchLaterRounded";
 import ThumbUpRoundedIcon from "@mui/icons-material/ThumbUpRounded";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Sidebar = (props) => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
@@ -27,7 +28,26 @@ const Sidebar = (props) => {
       <List>
         {["Home", "Shorts", "Subscriptions", "Originals", "VibeTube Music"].map(
           (text, index) => (
-            <ListItem key={text} disablePadding>
+            <ListItem
+              component={Link}
+              to={
+                index === 0
+                  ? "/"
+                  : index === 1
+                  ? "/shorts"
+                  : index === 0
+                  ? "/"
+                  : index === 1
+                  ? "/subscriptions"
+                  : index === 2
+                  ? "/originals"
+                  : index === 3
+                  ? "/vibetubemusic"
+                  : null
+              }
+              key={text}
+              disablePadding
+            >
               <ListItemButton>
                 <ListItemIcon>
                   {index === 0 ? (
